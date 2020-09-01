@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <cloud-header v-if="!$route.meta.isLogin"></cloud-header>
+    <router-view />
   </div>
 </template>
 
-
 <script>
+import CloudHeader from "components/common/header/Index";
 export default {
-  
-}
+  components: {
+    CloudHeader,
+  },
+};
 </script>
 
 <style lang="stylus">
 @import './assets/styles/iconfont.css';
+
 .fly {
   pointer-events: none;
   position: fixed;
   z-index: 100;
 }
+
 .bg-fly-circle1 {
   left: 40px;
   top: 100px;
