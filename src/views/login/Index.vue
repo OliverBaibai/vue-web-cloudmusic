@@ -43,8 +43,7 @@
                     type="primary"
                     :loading="loginLoading"
                     @click="login('ruleForm')"
-                    >登录</el-button
-                  >
+                  >登录</el-button>
                 </div>
               </div>
             </el-form>
@@ -64,25 +63,25 @@ export default {
     return {
       ruleForm: {
         phone: "",
-        password: "",
+        password: ""
       },
       rules: {
         phone: [{ required: true, message: "手机号都没有！", trigger: "blur" }],
-        password: [{ required: true, message: "密码呢！", trigger: "blur" }],
+        password: [{ required: true, message: "密码呢！", trigger: "blur" }]
       },
       loginLoading: false,
-      parallax: "depth",
+      parallax: "depth"
     };
   },
   components: {
     KinesisContainer,
-    KinesisElement,
+    KinesisElement
   },
   methods: {
     // 登录操作
     login(formName) {
       this.loginLoading = false;
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(valid => {
         if (valid) {
           this.loginLoading = true;
           let { phone, password } = this.ruleForm;
@@ -97,7 +96,7 @@ export default {
       this.loginLoading = false;
       this.$api
         .login(phone, password)
-        .then((res) => {
+        .then(res => {
           console.log(res);
           if (res.code === 200) {
             this.getUserDetail(res.profile.userId);
@@ -127,7 +126,7 @@ export default {
           this.setUserInfo(res.profile);
           this.$message({
             message: "登录成功",
-            type: "success",
+            type: "success"
           });
           setTimeout(() => {
             this.loginLoading = false;
@@ -148,9 +147,9 @@ export default {
     },
     ...mapMutations({
       setUserInfo: "SET_USERINFO",
-      setLoginStatu: "SET_LOGINSTATU",
-    }),
-  },
+      setLoginStatu: "SET_LOGINSTATU"
+    })
+  }
 };
 </script>
 

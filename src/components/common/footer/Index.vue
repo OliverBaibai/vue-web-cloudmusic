@@ -22,7 +22,7 @@
           <span class="mr5">Copyright © 2019-2020</span>
           <a>CloudMusic</a>
           <span>. Designed by</span>
-          <a target="_blank">熙穆科技</a>.
+          <a target="_blank">之一科技</a>.
         </p>
       </div>
     </div>

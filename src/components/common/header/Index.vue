@@ -8,21 +8,6 @@
         <li>
           <router-link :to="{ name: 'home' }" tag="a">发现音乐</router-link>
         </li>
-        <li>
-          <router-link :to="{ name: 'rank' }" tag="a">排行榜</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'playlist' }" tag="a">歌单</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'singer' }" tag="a">歌手</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'video' }" tag="a">视频</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'mv' }" tag="a">MV</router-link>
-        </li>
       </ul>
       <div class="search" @click="openSearchPop">
         <i class="iconfont nicesearch-o"></i>
@@ -46,7 +31,7 @@
         </div>
         <div class="no-login flex-row" @click="login" v-else>登录</div>
       </div>
-      <div class="search-wrap" :class="[searchOpenClass, searchCloseClass]">
+      <!-- <div class="search-wrap" :class="[searchOpenClass, searchCloseClass]">
         <div class="overlay" @click="closeSearchPop"></div>
         <div class="search-body">
           <div class="search-content">
@@ -95,19 +80,45 @@
             <span class="close-light"></span>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      keyword: "",
+      hots: [],
+      searchHistory: [],
+      searchOpenClass: "",
+      searchCloseClass: ""
+    };
   },
   components: {},
-  computed: {},
-  methods: {},
+  computed: {
+    ...mapGetters(["userInfo", "loginStatu"])
+  },
+  methods: {
+    openSearchPop() {
+      this.searchOpenClass = "open";
+      this.searchCloseClass = "";
+    },
+    closeSearchPop() {
+      this.searchOpenClass = "";
+      this.searchCloseClass = "close";
+    },
+    login() {
+      this.$router.push({
+        name: "login"
+      });
+    },
+    handleCommand(command) {
+      console.log(command);
+    }
+  },
   watch: {},
   created() {},
   mounted() {}

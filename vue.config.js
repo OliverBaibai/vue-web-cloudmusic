@@ -1,4 +1,5 @@
 const path = require('path')
+
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -38,7 +39,7 @@ module.exports = {
     }
   },
   devServer: {
-    port: 8087,
+    port: 8089,
     open: true,
     hotOnly: true
   }

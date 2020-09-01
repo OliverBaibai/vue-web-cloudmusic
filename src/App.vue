@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <cloud-header v-if="!$route.meta.isLogin"></cloud-header>
+    <cloud-header></cloud-header>
     <router-view />
+    <cloud-footer></cloud-footer>
+    <back-top></back-top>
   </div>
 </template>
 
 <script>
 import CloudHeader from "components/common/header/Index";
+import CloudFooter from "components/common/footer/Index";
+import BackTop from "components/common/gotop/Index";
 export default {
   components: {
     CloudHeader,
-  },
+    CloudFooter,
+    BackTop
+  }
 };
 </script>
 
