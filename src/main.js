@@ -34,6 +34,8 @@ import {
   Tooltip,
   Slider,
   Loading,
+  Carousel,
+  CarouselItem,
 } from "element-ui";
 Vue.use(Avatar)
   .use(Image)
@@ -52,6 +54,8 @@ Vue.use(Avatar)
   .use(Popover)
   .use(Tooltip)
   .use(Slider)
+  .use(Carousel)
+  .use(CarouselItem)
   .use(Loading);
 Vue.config.productionTip = false;
 Vue.prototype.$api = getApi;
