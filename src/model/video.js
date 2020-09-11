@@ -3,14 +3,22 @@
 import utils from '../utils/utils'
 
 export default class Video {
-  constructor({ id, nickName, name, playCount, duration, image, isLive }) {
-    ;(this.id = id),
-      (this.nickName = nickName),
-      (this.name = name),
-      (this.playCount = playCount),
-      (this.duration = duration),
-      (this.image = image),
-      (this.isLive = isLive)
+  constructor({
+    id,
+    nickName,
+    name,
+    playCount,
+    duration,
+    image,
+    isLive
+  }) {
+    (this.id = id),
+    (this.nickName = nickName),
+    (this.name = name),
+    (this.playCount = playCount),
+    (this.duration = duration),
+    (this.image = image),
+    (this.isLive = isLive)
   }
 }
 
