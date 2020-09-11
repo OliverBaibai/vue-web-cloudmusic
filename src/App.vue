@@ -4,6 +4,7 @@
     <router-view />
     <cloud-footer></cloud-footer>
     <back-top></back-top>
+    <player-bar></player-bar>
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 import CloudHeader from "components/common/header/Index";
 import CloudFooter from "components/common/footer/Index";
 import BackTop from "components/common/gotop/Index";
+import PlayerBar from 'components/common/playerBar/Index'
 export default {
   components: {
     CloudHeader,
     CloudFooter,
-    BackTop
+    BackTop,
+    PlayerBar
   }
 };
 </script>

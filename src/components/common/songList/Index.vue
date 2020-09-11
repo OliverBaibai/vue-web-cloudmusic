@@ -2,14 +2,59 @@
   <div class="list">
     <div
       class="item"
-      v-for="(item,index) in songList"
+      v-for="(item, index) of songList"
       :key="item.id"
-      :class="index == currentIndex && currentSong.id == item.id && playing ? 'playing' : ''"
-    ></div>
+      :class="
+            index == currentIndex && currentSong.id == item.id && playing
+              ? 'playing'
+              : ''
+          "
+    >
+      <div class="wrapper flex-center shadow">
+        <div class="index-container flex-center">
+          <span class="num">{{ utils.formatZero(index + 1, 2) }}</span>
+          <div class="play-icon">
+            <div class="line" style="animation-delay: -1.2s;"></div>
+            <div class="line"></div>
+            <div class="line" style="animation-delay: -1.5s;"></div>
+            <div class="line" style="animation-delay: -0.9s;"></div>
+            <div class="line" style="animation-delay: -0.6s;"></div>
+          </div>
+          <i class="iconfont nicebofang2 play-btn" @click="playSong(item, index)"></i>
+          <i class="iconfont nicezanting1 pause-btn" @click="pauseSong(item, index)"></i>
+        </div>
+        <div class="avatar">
+          <el-image :key="item.image + '?param=150y150'" :src="item.image + '?param=150y150'" lazy>
+            <div slot="placeholder" class="image-slot flex-center flex-column">
+              <i class="iconfont niceicon-3"></i>
+              <p>
+                加载中
+                <span class="dot">...</span>
+              </p>
+            </div>
+            <div slot="error" class="image-slot flex-center">
+              <i class="el-icon-picture-outline"></i>
+            </div>
+          </el-image>
+          <div class="layer flex-center">
+            <i class="iconfont niceicon-9"></i>
+          </div>
+        </div>
+        <div class="info">
+          <p class="name ellipsis">{{ item.name }}</p>
+          <p class="flex-row ellipsis">
+            <span>{{ item.singer }}</span>
+          </p>
+        </div>
+        <p class="album">《{{ item.album }}》</p>
+        <p class="duration transition">{{ utils.formatSecondTime(item.duration) }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {};
@@ -19,8 +64,29 @@ export default {
       type: Array
     }
   },
-  methods: {},
-  computed: {}
+  computed: {
+    ...mapGetters(["currentIndex", "playing", "currentSong"])
+  },
+  methods: {
+    // 播放歌曲
+    playSong(item, index) {
+      this.selectPlay({
+        list: this.songList,
+        index
+      });
+    },
+    // 停止播放歌曲
+    pauseSong() {
+      this.pausePlay();
+    },
+    ...mapActions([
+      // 点击选择播放
+      "selectPlay",
+      // 点击播放全部
+      "playAll",
+      "pausePlay"
+    ])
+  }
 };
 </script>
 
